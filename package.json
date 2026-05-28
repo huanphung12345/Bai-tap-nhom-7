@@ -1,0 +1,31 @@
+{
+  "name": "fittrack-app",
+  "version": "2.0.0",
+  "description": "Modern fitness tracking web application with ES6 modules",
+  "type": "module",
+  "main": "js/app.js",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "lint": "eslint js/ --ext .js",
+    "lint:fix": "eslint js/ --ext .js --fix",
+    "format": "prettier --write \"js/**/*.js\" \"css/**/*.css\" \"**/*.html\""
+  },
+  "keywords": [
+    "fitness",
+    "tracking",
+    "workout",
+    "health",
+    "es6",
+    "bootstrap"
+  ],
+  "author": "FIT-DNU Group 7",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
