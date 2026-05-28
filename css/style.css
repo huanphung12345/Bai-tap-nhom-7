@@ -1403,8 +1403,6 @@ body {
     /* chữ trắng */
     border-color: #0d6efd;
     /* viền cùng màu */
-<<<<<<< HEAD
-=======
 }
 .navbar .nav-link.active {
     color: #fff !important;
@@ -2465,5 +2463,4 @@ body {
 
 .bmi-animate-in {
     animation: fadeInUp 0.5s ease forwards;
->>>>>>> 378dac4 (first commit)
 }
