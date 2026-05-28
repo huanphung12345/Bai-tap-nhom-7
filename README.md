@@ -10,8 +10,3 @@
 
 # Mã Sinh Viên 3: 1971020543 - Vừ Anh Sự
 # Bai-tap-nhom-7
-<<<<<<< HEAD
-=======
-# Bai-tap-nhom-7
->>>>>>> 378dac4 (first commit)
-# Bai-tap-nhom-7

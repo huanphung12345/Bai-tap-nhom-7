@@ -4,10 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-=======
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1048/1048953.png">
->>>>>>> 378dac4 (first commit)
     <title>🏋️ FitTrack - Nhật Ký Tập Luyện</title>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,8 +15,6 @@
         rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-<<<<<<< HEAD
-=======
 
     <!-- Auth extra styles -->
     <style>
@@ -120,7 +115,6 @@
             margin-bottom: 20px;
         }
     </style>
->>>>>>> 378dac4 (first commit)
 </head>
 
 <body>
@@ -156,30 +150,13 @@
                             <i class="bi bi-list-check me-1"></i>Bài Tập
                         </a>
                     </li>
-<<<<<<< HEAD
-                    <li class="nav-item">
-=======
 
                     <!-- ========== ADMIN ONLY: Nút vào trang Admin ========== -->
                     <li class="nav-item admin-only">
->>>>>>> 378dac4 (first commit)
                         <a class="nav-link btn btn-outline-light btn-sm ms-2 px-3 active" href="admin.html">
                             <i class="bi bi-gear-fill me-1"></i>Admin
                         </a>
                     </li>
-<<<<<<< HEAD
-                        <!-- Thêm vào navbar ul.navbar-nav -->
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#users-section">
-                                <i class="bi bi-people me-1"></i>Cộng Đồng
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#bmi-calculator">
-                                <i class="bi bi-calculator me-1"></i>BMI
-                            </a>
-                        </li>
-=======
 
                     <li class="nav-item">
                         <a class="nav-link active" href="#users-section">
@@ -196,18 +173,14 @@
                     <li class="nav-item ms-2" id="navUserArea">
                         <!-- Được render bởi Auth.applyPermissions() -->
                     </li>
->>>>>>> 378dac4 (first commit)
                 </ul>
             </div>
         </div>
     </nav>
 
-<<<<<<< HEAD
-=======
     <!-- Welcome Banner (inserted via JS) -->
     <div class="container mt-3" id="welcomeBannerContainer"></div>
 
->>>>>>> 378dac4 (first commit)
     <!-- Hero Section -->
     <section class="hero-section text-white text-center">
         <div class="container">
@@ -216,13 +189,8 @@
                     <h1 class="display-4 fw-bold mb-3">
                         <i class="bi bi-lightning-charge-fill"></i> Theo Dõi Hành Trình Tập Luyện
                     </h1>
-<<<<<<< HEAD
-                    <p class="lead mb-4">Ghi lại mỗi buổi tập, theo dõi tiến độ và chinh phục mục tiêu sức khỏe của bạn
-                    </p>
-=======
                     <p class="lead mb-4">Ghi lại mỗi buổi tập, theo dõi tiến độ và chinh phục mục tiêu sức khỏe của
                         bạn</p>
->>>>>>> 378dac4 (first commit)
                     <div class="d-flex justify-content-center gap-3">
                         <a href="#history" class="btn btn-light btn-lg px-4">
                             <i class="bi bi-eye me-2"></i>Xem Lịch Sử
@@ -361,12 +329,8 @@
                 <i class="bi bi-inbox display-1 text-muted"></i>
                 <h4 class="mt-3 text-muted">Chưa có buổi tập nào</h4>
                 <p class="text-muted">Hãy bắt đầu ghi lại buổi tập đầu tiên!</p>
-<<<<<<< HEAD
-                <a href="admin.html" class="btn btn-primary">
-=======
                 <!-- Chỉ admin mới thấy nút thêm -->
                 <a href="admin.html" class="btn btn-primary admin-only">
->>>>>>> 378dac4 (first commit)
                     <i class="bi bi-plus-circle me-2"></i>Thêm Buổi Tập
                 </a>
             </div>
@@ -389,13 +353,7 @@
                             </h5>
                         </div>
                         <div class="card-body">
-<<<<<<< HEAD
-                            <div class="chart-container" id="caloriesChart">
-                                <!-- CSS Bar Chart -->
-                            </div>
-=======
                             <div class="chart-container" id="caloriesChart"></div>
->>>>>>> 378dac4 (first commit)
                         </div>
                     </div>
                 </div>
@@ -409,13 +367,7 @@
                             </h5>
                         </div>
                         <div class="card-body">
-<<<<<<< HEAD
-                            <div class="chart-container" id="durationChart">
-                                <!-- CSS Bar Chart -->
-                            </div>
-=======
                             <div class="chart-container" id="durationChart"></div>
->>>>>>> 378dac4 (first commit)
                         </div>
                     </div>
                 </div>
@@ -429,13 +381,7 @@
                             </h5>
                         </div>
                         <div class="card-body">
-<<<<<<< HEAD
-                            <div id="muscleGroupChart">
-                                <!-- Horizontal bar chart -->
-                            </div>
-=======
                             <div id="muscleGroupChart"></div>
->>>>>>> 378dac4 (first commit)
                         </div>
                     </div>
                 </div>
@@ -449,13 +395,7 @@
                             </h5>
                         </div>
                         <div class="card-body">
-<<<<<<< HEAD
-                            <div id="weeklyActivityChart">
-                                <!-- Activity heatmap -->
-                            </div>
-=======
                             <div id="weeklyActivityChart"></div>
->>>>>>> 378dac4 (first commit)
                         </div>
                     </div>
                 </div>
@@ -469,33 +409,17 @@
             <h2 class="section-title text-center mb-5">
                 <i class="bi bi-list-check me-2"></i>Thư Viện Bài Tập
             </h2>
-<<<<<<< HEAD
-            <div class="row g-4" id="exercisesList">
-                <!-- Loaded dynamically -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Thêm vào sau section exercises-section -->
-    
-    <!-- ===================== USERS SECTION ===================== -->
-=======
             <div class="row g-4" id="exercisesList"></div>
         </div>
     </section>
 
     <!-- Users Section -->
->>>>>>> 378dac4 (first commit)
     <section id="users-section" class="py-5">
         <div class="container">
             <h2 class="section-title text-center mb-5">
                 <i class="bi bi-people me-2"></i>Cộng Đồng Tập Luyện
             </h2>
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 378dac4 (first commit)
             <!-- Filter Users -->
             <div class="card filter-card mb-4">
                 <div class="card-body">
@@ -552,17 +476,10 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-    
-            <!-- Users Grid -->
-            <div class="row g-4" id="usersList"></div>
-    
-=======
 
             <!-- Users Grid -->
             <div class="row g-4" id="usersList"></div>
 
->>>>>>> 378dac4 (first commit)
             <!-- Loading -->
             <div class="text-center py-4 d-none" id="usersLoading">
                 <div class="spinner-border text-primary"></div>
@@ -570,263 +487,6 @@
             </div>
         </div>
     </section>
-<<<<<<< HEAD
-    
-    <!-- ===================== BMI CALCULATOR ===================== -->
-    <section id="bmi-calculator" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title text-center mb-2">
-                <i class="bi bi-calculator me-2"></i>Tính BMI Thủ Công
-            </h2>
-            <p class="text-center text-muted mb-5">
-                Body Mass Index — Chỉ số khối cơ thể
-            </p>
-    
-            <div class="row justify-content-center g-4">
-                <!-- Form tính BMI -->
-                <div class="col-lg-5">
-                    <div class="card bmi-form-card">
-                        <div class="card-header bg-gradient-primary text-white">
-                            <h5 class="mb-0">
-                                <i class="bi bi-person-bounding-box me-2"></i>Nhập Thông Tin
-                            </h5>
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">
-                                    <i class="bi bi-person me-1 text-primary"></i>Họ và Tên
-                                </label>
-                                <input type="text" class="form-control form-control-lg" id="bmiName"
-                                    placeholder="Nhập họ tên của bạn...">
-                            </div>
-    
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">
-                                    <i class="bi bi-gender-ambiguous me-1 text-primary"></i>Giới Tính
-                                </label>
-                                <div class="d-flex gap-3">
-                                    <div class="gender-btn active" data-gender="Nam" id="genderNam">
-                                        <i class="bi bi-gender-male"></i> Nam
-                                    </div>
-                                    <div class="gender-btn" data-gender="Nữ" id="genderNu">
-                                        <i class="bi bi-gender-female"></i> Nữ
-                                    </div>
-                                </div>
-                                <input type="hidden" id="bmiGender" value="Nam">
-                            </div>
-    
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">
-                                    <i class="bi bi-arrows-vertical me-1 text-primary"></i>
-                                    Chiều Cao: <span id="heightDisplay" class="text-primary fw-bold">170</span> cm
-                                </label>
-                                <input type="range" class="form-range bmi-range" id="bmiHeight" min="140" max="210"
-                                    value="170" step="1">
-                                <div class="d-flex justify-content-between">
-                                    <small class="text-muted">140 cm</small>
-                                    <small class="text-muted">210 cm</small>
-                                </div>
-                            </div>
-    
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">
-                                    <i class="bi bi-box me-1 text-primary"></i>
-                                    Cân Nặng: <span id="weightDisplay" class="text-primary fw-bold">65</span> kg
-                                </label>
-                                <input type="range" class="form-range bmi-range" id="bmiWeight" min="30" max="150"
-                                    value="65" step="0.5">
-                                <div class="d-flex justify-content-between">
-                                    <small class="text-muted">30 kg</small>
-                                    <small class="text-muted">150 kg</small>
-                                </div>
-                            </div>
-    
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">
-                                    <i class="bi bi-calendar me-1 text-primary"></i>Tuổi
-                                </label>
-                                <input type="number" class="form-control" id="bmiAge" min="10" max="80" value="25"
-                                    placeholder="Tuổi">
-                            </div>
-    
-                            <!-- Nhập thủ công -->
-                            <div class="manual-input-toggle mb-3">
-                                <button class="btn btn-outline-secondary btn-sm w-100" id="btnToggleManual">
-                                    <i class="bi bi-keyboard me-1"></i>Nhập số thủ công
-                                </button>
-                            </div>
-                            <div class="manual-inputs d-none" id="manualInputs">
-                                <div class="row g-2">
-                                    <div class="col-6">
-                                        <label class="form-label small fw-semibold">Chiều cao (cm)</label>
-                                        <input type="number" class="form-control" id="manualHeight" min="140" max="210"
-                                            placeholder="VD: 170">
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="form-label small fw-semibold">Cân nặng (kg)</label>
-                                        <input type="number" class="form-control" id="manualWeight" min="30" max="150"
-                                            step="0.1" placeholder="VD: 65">
-                                    </div>
-                                </div>
-                            </div>
-    
-                            <button class="btn btn-primary btn-lg w-100 mt-3" id="btnCalculateBMI">
-                                <i class="bi bi-calculator me-2"></i>Tính BMI Ngay
-                            </button>
-                        </div>
-                    </div>
-                </div>
-    
-                <!-- Kết quả BMI -->
-                <div class="col-lg-7">
-                    <!-- Kết quả chính -->
-                    <div class="card bmi-result-card mb-4" id="bmiResultCard">
-                        <div class="card-body p-4">
-                            <!-- Placeholder -->
-                            <div id="bmiPlaceholder" class="text-center py-4">
-                                <i class="bi bi-calculator display-2 text-muted opacity-50"></i>
-                                <p class="text-muted mt-3 mb-0">
-                                    Nhập thông tin và nhấn <strong>Tính BMI</strong>
-                                </p>
-                            </div>
-    
-                            <!-- Result (hidden initially) -->
-                            <div id="bmiResult" class="d-none">
-                                <div class="text-center mb-4">
-                                    <div class="bmi-avatar" id="bmiAvatar">
-                                        <i class="bi bi-person-circle"></i>
-                                    </div>
-                                    <h4 class="mt-2 mb-0" id="bmiResultName">Nguyễn Văn A</h4>
-                                    <small class="text-muted" id="bmiResultMeta">Nam · 25 tuổi</small>
-                                </div>
-    
-                                <!-- BMI Value Display -->
-                                <div class="bmi-value-box text-center mb-4" id="bmiValueBox">
-                                    <div class="bmi-label">Chỉ số BMI của bạn</div>
-                                    <div class="bmi-number" id="bmiNumber">0.0</div>
-                                    <div class="bmi-category-badge" id="bmiCategoryBadge">
-                                        Đang tính...
-                                    </div>
-                                </div>
-    
-                                <!-- BMI Scale Bar -->
-                                <div class="bmi-scale mb-4">
-                                    <div class="bmi-scale-bar">
-                                        <div class="bmi-scale-segment seg-underweight" title="Thiếu cân: < 18.5"></div>
-                                        <div class="bmi-scale-segment seg-normal" title="Bình thường: 18.5–22.9"></div>
-                                        <div class="bmi-scale-segment seg-overweight" title="Thừa cân: 23–24.9"></div>
-                                        <div class="bmi-scale-segment seg-obese1" title="Béo phì độ 1: 25–29.9"></div>
-                                        <div class="bmi-scale-segment seg-obese2" title="Béo phì độ 2: ≥ 30"></div>
-                                        <div class="bmi-scale-pointer" id="bmiPointer" style="left: 0%"></div>
-                                    </div>
-                                    <div class="bmi-scale-labels">
-                                        <span>&lt;18.5</span>
-                                        <span>18.5</span>
-                                        <span>23</span>
-                                        <span>25</span>
-                                        <span>30+</span>
-                                    </div>
-                                    <div class="bmi-scale-names">
-                                        <span class="text-info">Thiếu cân</span>
-                                        <span class="text-success">Bình thường</span>
-                                        <span class="text-warning">Thừa cân</span>
-                                        <span class="text-orange">Béo phì I</span>
-                                        <span class="text-danger">Béo phì II</span>
-                                    </div>
-                                </div>
-    
-                                <!-- Thống kê chi tiết -->
-                                <div class="row g-3 mb-4" id="bmiStats">
-                                    <div class="col-6">
-                                        <div class="bmi-stat-box">
-                                            <i class="bi bi-arrows-vertical text-primary"></i>
-                                            <div class="bmi-stat-val" id="statHeight">—</div>
-                                            <div class="bmi-stat-lbl">Chiều Cao</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="bmi-stat-box">
-                                            <i class="bi bi-box text-success"></i>
-                                            <div class="bmi-stat-val" id="statWeight">—</div>
-                                            <div class="bmi-stat-lbl">Cân Nặng</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="bmi-stat-box">
-                                            <i class="bi bi-bullseye text-warning"></i>
-                                            <div class="bmi-stat-val" id="statIdealWeight">—</div>
-                                            <div class="bmi-stat-lbl">Cân Nặng Lý Tưởng</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="bmi-stat-box">
-                                            <i class="bi bi-fire text-danger"></i>
-                                            <div class="bmi-stat-val" id="statBMR">—</div>
-                                            <div class="bmi-stat-lbl">BMR (Calo/ngày)</div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <!-- Lời khuyên -->
-                                <div class="bmi-advice-box" id="bmiAdviceBox">
-                                    <h6 class="fw-bold mb-2">
-                                        <i class="bi bi-lightbulb me-2"></i>Lời Khuyên
-                                    </h6>
-                                    <p class="mb-2" id="bmiAdviceText"></p>
-                                    <div id="bmiWorkoutSuggest"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <!-- Bảng BMI reference -->
-                    <div class="card">
-                        <div class="card-header bg-transparent">
-                            <h6 class="mb-0">
-                                <i class="bi bi-table me-2"></i>Bảng Phân Loại BMI (WHO Châu Á)
-                            </h6>
-                        </div>
-                        <div class="card-body p-0">
-                            <table class="table table-bordered mb-0 bmi-table" id="bmiReferenceTable">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Phân Loại</th>
-                                        <th>BMI</th>
-                                        <th>Nguy Cơ SK</th>
-                                        <th>Gợi Ý Tập</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bmi-row-underweight">
-                                        <td><span class="badge bg-info">Thiếu cân</span></td>
-                                        <td>&lt; 18.5</td>
-                                        <td>Suy dinh dưỡng</td>
-                                        <td>Tăng cân, Full Body</td>
-                                    </tr>
-                                    <tr class="bmi-row-normal">
-                                        <td><span class="badge bg-success">Bình thường</span></td>
-                                        <td>18.5 – 22.9</td>
-                                        <td>Thấp</td>
-                                        <td>Duy trì, Cardio + Gym</td>
-                                    </tr>
-                                    <tr class="bmi-row-overweight">
-                                        <td><span class="badge bg-warning text-dark">Thừa cân</span></td>
-                                        <td>23.0 – 24.9</td>
-                                        <td>Trung bình</td>
-                                        <td>Cardio, giảm mỡ</td>
-                                    </tr>
-                                    <tr class="bmi-row-obese1">
-                                        <td><span class="badge bg-orange">Béo phì I</span></td>
-                                        <td>25.0 – 29.9</td>
-                                        <td>Cao</td>
-                                        <td>HIIT, Cardio nặng</td>
-                                    </tr>
-                                    <tr class="bmi-row-obese2">
-                                        <td><span class="badge bg-danger">Béo phì II</span></td>
-                                        <td>≥ 30.0</td>
-                                        <td>Rất cao</td>
-                                        <td>Tư vấn bác sĩ</td>
-=======
 
     <!-- BMI Calculator -->
 <!-- ======================== BMI CALCULATOR — CẢI TIẾN ======================== -->
@@ -1235,7 +895,6 @@
                                     <tr>
                                         <td colspan="10" class="text-center text-muted py-3">Chưa có lịch sử tính BMI
                                         </td>
->>>>>>> 378dac4 (first commit)
                                     </tr>
                                 </tbody>
                             </table>
@@ -1243,44 +902,6 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-    
-            <!-- Lịch sử BMI đã tính -->
-            <div class="row mt-5">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="mb-0">
-                                <i class="bi bi-clock-history me-2"></i>Lịch Sử Tính BMI
-                            </h5>
-                            <button class="btn btn-outline-danger btn-sm" id="btnClearHistory">
-                                <i class="bi bi-trash me-1"></i>Xóa Lịch Sử
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover align-middle">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Tên</th>
-                                            <th>Giới tính</th>
-                                            <th>Tuổi</th>
-                                            <th>Chiều cao</th>
-                                            <th>Cân nặng</th>
-                                            <th>BMI</th>
-                                            <th>Phân loại</th>
-                                            <th>Thời gian</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="bmiHistoryBody">
-                                        <tr>
-                                            <td colspan="8" class="text-center text-muted py-3">
-                                                Chưa có lịch sử tính BMI
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-=======
         </div>
     </div>
 </section>
@@ -1374,47 +995,10 @@
                         <div class="card-body">
                             <div class="row g-2" id="quickAddButtons">
                                 <!-- Generated by JS -->
->>>>>>> 378dac4 (first commit)
                             </div>
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-            </div>
-        </div>
-    </section>
-
-    <!-- Calorie Calculator -->
-    <section id="calculator" class="py-5">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">
-                <i class="bi bi-calculator me-2"></i>Tính Tổng Calo
-            </h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card calculator-card">
-                        <div class="card-body p-4">
-                            <div id="calcExerciseList">
-                                <!-- Dynamic exercise rows -->
-                            </div>
-                            <button class="btn btn-outline-primary w-100 mt-3" id="btnAddExerciseRow">
-                                <i class="bi bi-plus-circle me-2"></i>Thêm Bài Tập
-                            </button>
-                            <hr>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <button class="btn btn-primary btn-lg" id="btnCalculateCalories">
-                                        <i class="bi bi-calculator me-2"></i>Tính Calo
-                                    </button>
-                                    <button class="btn btn-outline-secondary btn-lg ms-2" id="btnResetCalc">
-                                        <i class="bi bi-arrow-counterclockwise me-1"></i>Reset
-                                    </button>
-                                </div>
-                                <div class="text-end">
-                                    <div class="text-muted small">Tổng Calo Tiêu Hao</div>
-                                    <div class="display-5 fw-bold text-danger" id="totalCalcResult">0</div>
-                                    <div class="text-muted small">kcal</div>
-=======
     
                 <!-- Right: Results Panel -->
                 <div class="col-lg-5">
@@ -1518,7 +1102,6 @@
                             <div class="calc-history-list" id="calcHistoryList">
                                 <div class="text-center text-muted py-4">
                                     <i class="bi bi-inbox me-1"></i>Chưa có lịch sử
->>>>>>> 378dac4 (first commit)
                                 </div>
                             </div>
                         </div>
@@ -1548,13 +1131,7 @@
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-<<<<<<< HEAD
-                <div class="modal-body" id="workoutDetailBody">
-                    <!-- Dynamic content -->
-                </div>
-=======
                 <div class="modal-body" id="workoutDetailBody"></div>
->>>>>>> 378dac4 (first commit)
             </div>
         </div>
     </div>
@@ -1562,12 +1139,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<<<<<<< HEAD
-    <script src="js/utils.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/main.js"></script>
-    <!-- Thêm trước </body> trong index.html -->
-=======
 
     <!-- AUTH SCRIPT - PHẢI LOAD TRƯỚC CÁC SCRIPT KHÁC -->
     <script src="js/auth.js"></script>
@@ -1626,7 +1197,6 @@
     <script src="js/utils.js"></script>
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>
->>>>>>> 378dac4 (first commit)
     <script src="js/users.js"></script>
 </body>
 
