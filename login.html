@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1048/1048953.png">
+    <title>FitTrack - Đăng Nhập</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --primary-dark: #5a6fd6;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --bg-dark: #0f0c29;
+            --bg-mid: #302b63;
+            --bg-end: #24243e;
+            --success: #51cf66;
+            --danger: #ff6b6b;
+            --info: #8b9cf7;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-hover: rgba(255, 255, 255, 0.08);
+            --text: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --text-dim: rgba(255, 255, 255, 0.3);
+            --radius: 12px;
+            --radius-lg: 24px;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-mid), var(--bg-end));
+            overflow: hidden;
+            position: relative;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-orb.orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -100px;
+            right: -100px;
+            animation: orbFloat1 12s ease-in-out infinite;
+        }
+
+        .glow-orb.orb-2 {
+            width: 350px;
+            height: 350px;
+            background: var(--secondary);
+            bottom: -80px;
+            left: -80px;
+            animation: orbFloat2 15s ease-in-out infinite;
+        }
+
+        .glow-orb.orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: orbFloat3 10s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-40px, 30px);
+            }
+        }
+
+        @keyframes orbFloat2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -40px);
+            }
+        }
+
+        @keyframes orbFloat3 {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.3);
+            }
+        }
+
+        .login-wrapper {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 980px;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(15, 12, 41, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 0 120px rgba(102, 126, 234, 0.08);
+            animation: containerReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes containerReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .login-row {
+            display: flex;
+            min-height: 600px;
+        }
+
+        .login-brand {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-brand::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+            animation: rotateSlow 25s linear infinite;
+        }
+
+        .login-brand::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: pulseSlow 6s ease-in-out infinite;
+        }
+
+        @keyframes rotateSlow {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulseSlow {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.05;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.1;
+            }
+        }
+
+        .brand-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .brand-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2.8rem;
+            animation: iconFloat 3s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes iconFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .brand-content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-content>p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.7;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .brand-features {
+            list-style: none;
+            padding: 0;
+            margin-top: 32px;
+            text-align: left;
+        }
+
+        .brand-features li {
+            padding: 9px 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            animation: featureSlide 0.5s ease forwards;
+        }
+
+        .brand-features li:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .brand-features li:nth-child(2) {
+            animation-delay: 0.45s;
+        }
+
+        .brand-features li:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .brand-features li:nth-child(4) {
+            animation-delay: 0.75s;
+        }
+
+        .brand-features li:nth-child(5) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes featureSlide {
+            from {
+                opacity: 0;
+                transform: translateX(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .brand-features li i {
+            font-size: 1.1rem;
+            color: #a8edea;
+            flex-shrink: 0;
+        }
+
+        .login-form-panel {
+            flex: 1;
+            padding: 48px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .form-header h3 {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .form-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .auth-tabs {
+            display: flex;
+            background: var(--glass);
+            border-radius: var(--radius);
+            padding: 4px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 10px 16px;
+            text-align: center;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.88rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            background: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .auth-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .auth-tab:hover:not(.active) {
+            color: rgba(255, 255, 255, 0.85);
+            background: var(--glass-hover);
+        }
+
+        .auth-alert {
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            display: none;
+            align-items: center;
+            animation: alertPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes alertPop {
+            from {
+                opacity: 0;
+                transform: translateY(-8px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .auth-alert.alert-danger {
+            background: rgba(255, 107, 107, 0.12);
+            border: 1px solid rgba(255, 107, 107, 0.25);
+            color: var(--danger);
+        }
+
+        .auth-alert.alert-success {
+            background: rgba(81, 207, 102, 0.12);
+            border: 1px solid rgba(81, 207, 102, 0.25);
+            color: var(--success);
+        }
+
+        .auth-alert.alert-info {
+            background: rgba(102, 126, 234, 0.12);
+            border: 1px solid rgba(102, 126, 234, 0.25);
+            color: var(--info);
+        }
+
+        .input-group-custom {
+            position: relative;
+            margin-bottom: 14px;
+        }
+
+        .input-group-custom i.input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 1rem;
+            z-index: 2;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .input-group-custom input,
+        .input-group-custom select {
+            width: 100%;
+            padding: 12px 14px 12px 40px;
+            background: var(--glass);
+            border: 1.5px solid var(--glass-border);
+            border-radius: var(--radius);
+            color: white;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .input-group-custom select option {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .input-group-custom input:focus,
+        .input-group-custom select:focus {
+            border-color: var(--primary);
+            background: rgba(102, 126, 234, 0.06);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.12);
+        }
+
+        .input-group-custom input:focus~i.input-icon,
+        .input-group-custom input:focus+i.input-icon {
+            color: var(--primary);
+        }
+
+        .input-group-custom input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .input-group-custom .input-error {
+            border-color: rgba(255, 107, 107, 0.5) !important;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1) !important;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            cursor: pointer;
+            z-index: 2;
+            background: none;
+            border: none;
+            padding: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-radius: 6px;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary);
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-check-custom {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .form-check-custom input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .form-check-custom label {
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .forgot-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.84rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .forgot-link:hover {
+            color: #8b9cf7;
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: var(--radius);
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.2px;
+        }
+
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .btn-login:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.45);
+        }
+
+        .btn-login:hover::before {
+            opacity: 1;
+        }
+
+        .btn-login:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn-login .spinner-border {
+            width: 18px;
+            height: 18px;
+            border-width: 2px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+        }
+
+        .divider span {
+            padding: 0 14px;
+            white-space: nowrap;
+        }
+
+        .demo-accounts {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 14px;
+        }
+
+        .demo-accounts h6 {
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .demo-btn {
+            width: 100%;
+            padding: 9px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .demo-btn:last-child {
+            margin-bottom: 0;
+        }
+
+        .demo-btn:hover {
+            background: rgba(102, 126, 234, 0.12);
+            border-color: rgba(102, 126, 234, 0.3);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .demo-btn.admin-demo:hover {
+            background: rgba(255, 107, 107, 0.12);
+            border-color: rgba(255, 107, 107, 0.4);
+        }
+
+        .demo-btn i {
+            font-size: 1rem;
+        }
+
+        /* ===== REGISTER FORM GRID LAYOUT - THU GỌN ===== */
+        .reg-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 10px;
+            /* Giảm khoảng cách cột */
+        }
+
+        .reg-grid .span-2 {
+            grid-column: span 2;
+        }
+
+        /* Thu gọn input trong form đăng ký */
+        .reg-grid .input-group-custom {
+            margin-bottom: 10px;
+            /* Giảm khoảng cách dòng */
+        }
+
+        .reg-grid .input-group-custom input {
+            padding: 11px 12px 11px 38px;
+            /* Giảm padding ngang dọc */
+            font-size: 0.88rem;
+        }
+
+        .reg-grid .input-group-custom i.input-icon {
+            left: 12px;
+            font-size: 0.95rem;
+        }
+
+        .reg-grid .password-toggle {
+            right: 10px;
+        }
+
+        .password-strength {
+            grid-column: span 2;
+            margin-top: -4px;
+            margin-bottom: 6px;
+        }
+
+        .strength-bar {
+            height: 3px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .strength-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: var(--transition);
+            width: 0%;
+        }
+
+        .strength-text {
+            font-size: 0.68rem;
+            margin-top: 2px;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        /* Nút chọn vai trò dạng dính liền (Segmented Control) */
+        .compact-role-selector {
+            grid-column: span 2;
+            display: flex;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1.5px solid var(--glass-border);
+            margin-bottom: 10px;
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 9px 10px;
+            text-align: center;
+            border: none;
+            background: var(--glass);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .role-btn:first-child {
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .role-btn:hover:not(.active) {
+            background: var(--glass-hover);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .role-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .role-btn i {
+            margin-right: 4px;
+        }
+
+        .admin-code-grid {
+            grid-column: span 2;
+            animation: fieldReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fieldReveal {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-form-panel::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .login-form-panel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .login-form-panel::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+                padding-top: 20px;
+            }
+
+            .login-row {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .login-brand {
+                padding: 32px 24px;
+            }
+
+            .brand-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 2rem;
+                border-radius: 18px;
+                margin-bottom: 16px;
+            }
+
+            .brand-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .brand-content>p {
+                font-size: 0.85rem;
+            }
+
+            .brand-features {
+                display: none;
+            }
+
+            .login-form-panel {
+                padding: 28px 22px;
+            }
+
+            .form-header {
+                margin-bottom: 20px;
+            }
+
+            .form-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .glow-orb.orb-1,
+            .glow-orb.orb-2 {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-wrapper {
+                padding: 10px;
+            }
+
+            .login-container {
+                border-radius: 18px;
+            }
+
+            .form-options {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .reg-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .reg-grid .span-2,
+            .password-strength,
+            .compact-role-selector,
+            .admin-code-grid {
+                grid-column: span 1;
+            }
+
+            .role-btn:first-child {
+                border-right: none;
+                border-bottom: 1px solid var(--glass-border);
+            }
+
+            .compact-role-selector {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="login-wrapper">
+        <div class="login-container">
+            <div class="login-row">
+                <div class="login-brand">
+                    <div class="brand-content">
+                        <div class="brand-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+                        <h2>FitTrack</h2>
+                        <p>Nhật ký tập luyện thông minh<br>giúp bạn theo dõi & chinh phục mục tiêu</p>
+                        <ul class="brand-features">
+                            <li><i class="bi bi-check-circle-fill"></i> Theo dõi buổi tập chi tiết</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Biểu đồ tiến độ trực quan</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Tính BMI & Calo thông minh</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Cộng đồng tập luyện sôi nổi</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Thư viện 100+ bài tập</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="login-form-panel">
+                    <div class="form-header">
+                        <h3 id="formTitle">Chào Mừng Trở Lại! 👋</h3>
+                        <p id="formSubtitle">Đăng nhập để tiếp tục hành trình</p>
+                    </div>
+
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login" id="tabLogin"><i
+                                class="bi bi-box-arrow-in-right me-1"></i>Đăng Nhập</button>
+                        <button class="auth-tab" data-tab="register" id="tabRegister"><i
+                                class="bi bi-person-plus me-1"></i>Đăng Ký</button>
+                    </div>
+
+                    <div class="auth-alert" id="authAlert"></div>
+
+                    <!-- Login Form -->
+                    <form id="loginForm" novalidate>
+                        <div class="input-group-custom">
+                            <i class="bi bi-envelope input-icon"></i>
+                            <input type="email" id="loginEmail" placeholder="Email của bạn" required
+                                autocomplete="email">
+                        </div>
+                        <div class="input-group-custom">
+                            <i class="bi bi-lock input-icon"></i>
+                            <input type="password" id="loginPassword" placeholder="Mật khẩu" required
+                                autocomplete="current-password">
+                            <button type="button" class="password-toggle"
+                                onclick="togglePassword('loginPassword', this)"><i class="bi bi-eye"></i></button>
+                        </div>
+                        <div class="form-options">
+                            <div class="form-check-custom"><input type="checkbox" id="rememberMe" checked><label
+                                    for="rememberMe">Ghi nhớ đăng nhập</label></div>
+                            <a href="#" class="forgot-link" onclick="showForgotPassword(event)">Quên mật khẩu?</a>
+                        </div>
+                        <button type="submit" class="btn-login" id="btnLogin"><i
+                                class="bi bi-box-arrow-in-right me-2"></i>Đăng Nhập</button>
+                    </form>
+
+                    <!-- Register Form (ĐÃ THU GỌN) -->
+                    <form id="registerForm" style="display: none;" novalidate>
+                        <div class="reg-grid">
+                            <!-- Gộp Họ tên & Email cùng 1 hàng -->
+                            <div class="input-group-custom">
+                                <i class="bi bi-person input-icon"></i>
+                                <input type="text" id="regName" placeholder="Họ và tên" required>
+                            </div>
+                            <div class="input-group-custom">
+                                <i class="bi bi-envelope input-icon"></i>
+                                <input type="email" id="regEmail" placeholder="Email" required>
+                            </div>
+
+                            <!-- Mật khẩu & Xác nhận MK cùng 1 hàng -->
+                            <div class="input-group-custom">
+                                <i class="bi bi-lock input-icon"></i>
+                                <input type="password" id="regPassword" placeholder="Mật khẩu" required minlength="6">
+                                <button type="button" class="password-toggle"
+                                    onclick="togglePassword('regPassword', this)"><i class="bi bi-eye"></i></button>
+                            </div>
+                            <div class="input-group-custom">
+                                <i class="bi bi-lock-fill input-icon"></i>
+                                <input type="password" id="regConfirmPassword" placeholder="Xác nhận MK" required>
+                            </div>
+
+                            <div class="password-strength" id="passwordStrength" style="display:none;">
+                                <div class="strength-bar">
+                                    <div class="strength-fill" id="strengthFill"></div>
+                                </div>
+                                <div class="strength-text" id="strengthText"></div>
+                            </div>
+
+                            <!-- Nút chọn vai trò liền mạch -->
+                            <div class="compact-role-selector">
+                                <button type="button" class="role-btn active" data-role="customer"
+                                    onclick="selectRole('customer', this)"><i class="bi bi-person"></i> Khách
+                                    hàng</button>
+                                <button type="button" class="role-btn" data-role="admin"
+                                    onclick="selectRole('admin', this)"><i class="bi bi-shield-lock"></i> Admin</button>
+                            </div>
+
+                            <div class="input-group-custom d-none admin-code-grid" id="adminCodeGroup">
+                                <i class="bi bi-key input-icon"></i>
+                                <input type="password" id="adminCode" placeholder="Mã Admin (bỏ trống cũng được)">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-login" id="btnRegister" style="margin-top: 4px;"><i
+                                class="bi bi-person-plus me-2"></i>Đăng Ký</button>
+                    </form>
+
+                    <div class="divider"><span>Tài khoản demo</span></div>
+                    <div class="demo-accounts">
+                        <h6>🔑 Đăng nhập nhanh</h6>
+                        <button class="demo-btn" onclick="fillDemo('customer')"><i class="bi bi-person-circle"></i>
+                            Khách hàng: khach@fittrack.com</button>
+                        <button class="demo-btn admin-demo" onclick="fillDemo('admin')"><i
+                                class="bi bi-shield-check"></i> Admin: admin@fittrack.com</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_USERS_KEY = 'fittrack_users';
+        const STORAGE_SESSION_KEY = 'fittrack_session';
+        const STORAGE_REMEMBER_KEY = 'fittrack_remember';
+
+        const DEFAULT_USERS = [
+            { id: 1, name: 'Admin FitTrack', email: 'admin@fittrack.com', password: 'admin123', role: 'admin', adminCode: '', avatar: '', createdAt: new Date().toISOString() },
+            { id: 2, name: 'Nguyễn Văn Khách', email: 'khach@fittrack.com', password: 'khach123', role: 'customer', avatar: '', createdAt: new Date().toISOString() },
+            { id: 3, name: 'Trần Thị Lan', email: 'lan@fittrack.com', password: 'lan123', role: 'customer', avatar: '', createdAt: new Date().toISOString() }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => { initCanvasParticles(); initUsers(); checkExistingSession(); setupEventListeners(); });
+
+        function initCanvasParticles() {
+            const canvas = document.getElementById('particleCanvas'); const ctx = canvas.getContext('2d'); let particles = []; let mouse = { x: -1000, y: -1000 };
+            function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } resize(); window.addEventListener('resize', resize); document.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+            const colors = ['rgba(102, 126, 234, ', 'rgba(118, 75, 162, ', 'rgba(240, 147, 251, ', 'rgba(79, 172, 254, ', 'rgba(67, 233, 123, '];
+            class Particle { constructor() { this.reset(); } reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2.5 + 0.5; this.speedX = (Math.random() - 0.5) * 0.5; this.speedY = (Math.random() - 0.5) * 0.5; this.color = colors[Math.floor(Math.random() * colors.length)]; this.alpha = Math.random() * 0.4 + 0.1; this.baseAlpha = this.alpha; } update() { this.x += this.speedX; this.y += this.speedY; const dx = mouse.x - this.x; const dy = mouse.y - this.y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < 150) { const force = (150 - dist) / 150; this.alpha = this.baseAlpha + force * 0.4; this.x -= dx * force * 0.008; this.y -= dy * force * 0.008; } else { this.alpha += (this.baseAlpha - this.alpha) * 0.05; } if (this.x < -10) this.x = canvas.width + 10; if (this.x > canvas.width + 10) this.x = -10; if (this.y < -10) this.y = canvas.height + 10; if (this.y > canvas.height + 10) this.y = -10; } draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color + this.alpha + ')'; ctx.fill(); } }
+            const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000)); for (let i = 0; i < count; i++) particles.push(new Particle());
+            function drawConnections() { for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < 120) { const alpha = (1 - dist / 120) * 0.08; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(102, 126, 234, ${alpha})`; ctx.lineWidth = 0.5; ctx.stroke(); } } } }
+            function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); drawConnections(); requestAnimationFrame(animate); } animate();
+        }
+
+        function initUsers() { if (!localStorage.getItem(STORAGE_USERS_KEY)) localStorage.setItem(STORAGE_USERS_KEY, JSON.stringify(DEFAULT_USERS)); }
+        function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_USERS_KEY) || '[]'); }
+        function saveUsers(users) { localStorage.setItem(STORAGE_USERS_KEY, JSON.stringify(users)); }
+        function checkExistingSession() {
+            const session = JSON.parse(localStorage.getItem(STORAGE_SESSION_KEY) || sessionStorage.getItem(STORAGE_SESSION_KEY) || 'null');
+            if (session && session.email) window.location.href = 'index.html';
+            const remembered = JSON.parse(localStorage.getItem(STORAGE_REMEMBER_KEY) || 'null');
+            if (remembered) { document.getElementById('loginEmail').value = remembered.email; document.getElementById('rememberMe').checked = true; }
+        }
+        function setupEventListeners() {
+            document.getElementById('tabLogin').addEventListener('click', () => switchTab('login'));
+            document.getElementById('tabRegister').addEventListener('click', () => switchTab('register'));
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+            document.getElementById('regPassword').addEventListener('input', checkPasswordStrength);
+            document.querySelectorAll('.input-group-custom input').forEach(input => { input.addEventListener('input', () => { input.classList.remove('input-error'); const alert = document.getElementById('authAlert'); if (alert.style.display === 'block') hideAlert(); }); });
+            document.getElementById('loginPassword').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); document.getElementById('loginForm').requestSubmit(); } });
+        }
+        function switchTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active')); hideAlert();
+            if (tab === 'login') { document.getElementById('tabLogin').classList.add('active'); document.getElementById('loginForm').style.display = 'block'; document.getElementById('registerForm').style.display = 'none'; document.getElementById('formTitle').textContent = 'Chào Mừng Trở Lại! 👋'; document.getElementById('formSubtitle').textContent = 'Đăng nhập để tiếp tục hành trình'; }
+            else { document.getElementById('tabRegister').classList.add('active'); document.getElementById('loginForm').style.display = 'none'; document.getElementById('registerForm').style.display = 'block'; document.getElementById('formTitle').textContent = 'Tạo Tài Khoản Mới 🚀'; document.getElementById('formSubtitle').textContent = 'Bắt đầu hành trình tập luyện ngay'; }
+        }
+        function handleLogin(e) {
+            e.preventDefault(); const email = document.getElementById('loginEmail').value.trim().toLowerCase(); const password = document.getElementById('loginPassword').value; const remember = document.getElementById('rememberMe').checked;
+            if (!email || !password) { showAlert('Vui lòng nhập đầy đủ thông tin!', 'danger'); if (!email) document.getElementById('loginEmail').classList.add('input-error'); if (!password) document.getElementById('loginPassword').classList.add('input-error'); return; }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; if (!emailRegex.test(email)) { showAlert('Email không hợp lệ!', 'danger'); document.getElementById('loginEmail').classList.add('input-error'); return; }
+            const btn = document.getElementById('btnLogin'); setButtonLoading(btn, 'Đang đăng nhập...');
+            setTimeout(() => {
+                const users = getUsers(); const user = users.find(u => u.email.toLowerCase() === email && u.password === password);
+                if (!user) { const emailExists = users.find(u => u.email.toLowerCase() === email); if (emailExists) { showAlert('Mật khẩu không chính xác!', 'danger'); document.getElementById('loginPassword').classList.add('input-error'); } else { showAlert('Tài khoản không tồn tại! Vui lòng đăng ký.', 'danger'); document.getElementById('loginEmail').classList.add('input-error'); } resetButton(btn, '<i class="bi bi-box-arrow-in-right me-2"></i>Đăng Nhập'); return; }
+                const session = { id: user.id, name: user.name, email: user.email, role: user.role, avatar: user.avatar || '', loginAt: new Date().toISOString() };
+                if (remember) { localStorage.setItem(STORAGE_SESSION_KEY, JSON.stringify(session)); localStorage.setItem(STORAGE_REMEMBER_KEY, JSON.stringify({ email: user.email })); } else { sessionStorage.setItem(STORAGE_SESSION_KEY, JSON.stringify(session)); localStorage.removeItem(STORAGE_REMEMBER_KEY); }
+                showAlert(`Đăng nhập thành công! Xin chào ${user.name} 🎉`, 'success'); setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+            }, 1400);
+        }
+        function handleRegister(e) {
+            e.preventDefault(); const name = document.getElementById('regName').value.trim(); const email = document.getElementById('regEmail').value.trim().toLowerCase(); const password = document.getElementById('regPassword').value; const confirmPassword = document.getElementById('regConfirmPassword').value; const role = document.querySelector('.role-btn.active')?.dataset.role || 'customer';
+            if (!name || !email || !password || !confirmPassword) { showAlert('Vui lòng nhập đầy đủ thông tin!', 'danger'); if (!name) document.getElementById('regName').classList.add('input-error'); if (!email) document.getElementById('regEmail').classList.add('input-error'); if (!password) document.getElementById('regPassword').classList.add('input-error'); if (!confirmPassword) document.getElementById('regConfirmPassword').classList.add('input-error'); return; }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; if (!emailRegex.test(email)) { showAlert('Email không hợp lệ!', 'danger'); document.getElementById('regEmail').classList.add('input-error'); return; }
+            if (name.length < 2) { showAlert('Họ tên phải có ít nhất 2 ký tự!', 'danger'); document.getElementById('regName').classList.add('input-error'); return; }
+            if (password.length < 6) { showAlert('Mật khẩu phải có ít nhất 6 ký tự!', 'danger'); document.getElementById('regPassword').classList.add('input-error'); return; }
+            if (password !== confirmPassword) { showAlert('Mật khẩu xác nhận không khớp!', 'danger'); document.getElementById('regConfirmPassword').classList.add('input-error'); return; }
+
+            let adminCode = '';
+            if (role === 'admin') { adminCode = document.getElementById('adminCode').value.trim(); }
+
+            const users = getUsers();
+            if (users.find(u => u.email.toLowerCase() === email)) { showAlert('Email này đã được đăng ký!', 'danger'); document.getElementById('regEmail').classList.add('input-error'); return; }
+            const btn = document.getElementById('btnRegister'); setButtonLoading(btn, 'Đang tạo tài khoản...');
+            setTimeout(() => {
+                const newUser = { id: Date.now(), name, email, password, role, adminCode: adminCode || '', avatar: '', createdAt: new Date().toISOString() };
+                users.push(newUser); saveUsers(users);
+                showAlert('Đăng ký thành công! Vui lòng đăng nhập 🎉', 'success'); resetButton(btn, '<i class="bi bi-person-plus me-2"></i>Đăng Ký Tài Khoản');
+                setTimeout(() => { switchTab('login'); document.getElementById('loginEmail').value = email; document.getElementById('loginPassword').focus(); }, 1500);
+            }, 1200);
+        }
+        function setButtonLoading(btn, text) { btn.disabled = true; btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span>${text}`; }
+        function resetButton(btn, html) { btn.disabled = false; btn.innerHTML = html; }
+        function selectRole(role, el) {
+            document.querySelectorAll('.role-btn').forEach(r => r.classList.remove('active')); el.classList.add('active');
+            const adminCodeGroup = document.getElementById('adminCodeGroup');
+            if (role === 'admin') { adminCodeGroup.classList.remove('d-none'); document.getElementById('adminCode').focus(); } else { adminCodeGroup.classList.add('d-none'); document.getElementById('adminCode').value = ''; }
+        }
+        function checkPasswordStrength() {
+            const password = document.getElementById('regPassword').value; const strengthDiv = document.getElementById('passwordStrength'); const fill = document.getElementById('strengthFill'); const text = document.getElementById('strengthText');
+            if (password.length === 0) { strengthDiv.style.display = 'none'; return; } strengthDiv.style.display = 'block';
+            let score = 0; if (password.length >= 6) score++; if (password.length >= 8) score++; if (/[A-Z]/.test(password)) score++; if (/[0-9]/.test(password)) score++; if (/[^A-Za-z0-9]/.test(password)) score++;
+            const levels = [{ width: '20%', color: '#ff4757', text: 'Rất yếu' }, { width: '40%', color: '#ff6348', text: 'Yếu' }, { width: '60%', color: '#ffa502', text: 'Trung bình' }, { width: '80%', color: '#2ed573', text: 'Mạnh' }, { width: '100%', color: '#1dd1a1', text: 'Rất mạnh' }];
+            const level = levels[Math.min(score, 4)]; fill.style.width = level.width; fill.style.background = level.color; text.textContent = `Độ mạnh: ${level.text}`; text.style.color = level.color;
+        }
+        function togglePassword(inputId, btn) { const input = document.getElementById(inputId); const icon = btn.querySelector('i'); if (input.type === 'password') { input.type = 'text'; icon.classList.replace('bi-eye', 'bi-eye-slash'); } else { input.type = 'password'; icon.classList.replace('bi-eye-slash', 'bi-eye'); } }
+        function fillDemo(type) {
+            switchTab('login'); if (type === 'admin') { document.getElementById('loginEmail').value = 'admin@fittrack.com'; document.getElementById('loginPassword').value = 'admin123'; } else { document.getElementById('loginEmail').value = 'khach@fittrack.com'; document.getElementById('loginPassword').value = 'khach123'; }
+            document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error')); showAlert(`Đã điền tài khoản ${type === 'admin' ? 'Admin' : 'Khách hàng'} demo`, 'info');
+        }
+        function showForgotPassword(e) { e.preventDefault(); showAlert('Vui lòng liên hệ Admin để đặt lại mật khẩu: admin@fittrack.com', 'info'); }
+        function showAlert(message, type) {
+            const alert = document.getElementById('authAlert'); const icons = { danger: 'exclamation-triangle-fill', success: 'check-circle-fill', info: 'info-circle-fill' };
+            alert.className = `auth-alert alert-${type}`; alert.innerHTML = `<i class="bi bi-${icons[type] || 'info-circle'} me-2"></i>${message}`; alert.style.display = 'flex';
+            if (type !== 'danger') { clearTimeout(alert._hideTimeout); alert._hideTimeout = setTimeout(hideAlert, 8000); }
+        }
+        function hideAlert() { const alert = document.getElementById('authAlert'); alert.style.display = 'none'; }
+    </script>
+</body>
+
+</html>
