@@ -337,7 +337,7 @@ $(document).ready(function () {
     ===================================================== */
     function calculateBMI() {
         // ✅ DOM: .val() đọc tất cả inputs
-        const name   = $('#bmiName').val().trim() || 'Ẩn danh';
+        const name   = $('#bmiName').val().trim();
         const gender = $('#bmiGender').val();
         const age    = parseInt($('#bmiAge').val())    || 25;
         const height = parseFloat($('#bmiHeight').val());  // cm
