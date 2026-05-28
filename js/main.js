@@ -149,6 +149,13 @@ $(document).ready(function () {
         const exerciseCount = w.exercises
             ? w.exercises.split(',').length : 0;
 
+        const detailExerciseHtml = w.exercises
+            ? w.exercises.split(',').map(e =>
+                `<span class="badge bg-white text-dark border me-1 mb-1 p-2">
+                    <i class="bi bi-check2 text-success me-1"></i>${e.trim()}
+                </span>`).join('')
+            : '<span class="text-muted fst-italic">Chưa có bài tập</span>';
+
         const $body = $('<div>').addClass('card-body');
         $body.html(`
             <div class="d-flex justify-content-between align-items-center mb-2">
@@ -174,8 +181,19 @@ $(document).ready(function () {
                 </div>` : ''}
             </div>
             <button class="btn btn-sm btn-outline-primary w-100 mt-3 btn-view-detail">
-                <i class="bi bi-eye me-1"></i>Xem Chi Tiết
+                <i class="bi bi-chevron-down me-1"></i>Chi tiết buổi tập
             </button>
+            <div class="workout-detail mt-3 d-none">
+                <div class="detail-section mb-3">
+                    <div class="detail-title mb-2">Danh sách bài tập</div>
+                    <div class="detail-content">${detailExerciseHtml}</div>
+                </div>
+                ${w.notes ? `
+                <div class="detail-section">
+                    <div class="detail-title mb-2">Ghi chú</div>
+                    <div class="detail-content text-muted">${w.notes}</div>
+                </div>` : ''}
+            </div>
         `);
 
         $card.append($header, $body);
@@ -193,24 +211,37 @@ $(document).ready(function () {
     }
 
     /* ================================================
-       ✅ SỰ KIỆN 1: Click xem chi tiết workout
-       Dùng .on() với event delegation
+       ✅ SỰ KIỆN 1: Toggle chi tiết workout
+       Khi bật chi tiết cho thẻ này, đóng các thẻ khác
     ================================================ */
-    $('#workoutList').on('click', '.btn-view-detail', function () {
-        // ✅ jQuery Selector: $(this), .closest()
-        const $card   = $(this).closest('.workout-card');
-        // ✅ DOM: .attr() đọc data
-        const workout = JSON.parse($card.attr('data-workout'));
-        showWorkoutModal(workout);
+    $('#workoutList').on('click', '.workout-card .card-header, #workoutList .workout-card .btn-view-detail', function (e) {
+        e.stopPropagation();
+        const $card = $(this).closest('.workout-card');
+        toggleWorkoutDetails($card);
     });
 
-    /* ---- Click vào card cũng mở modal ---- */
-    $('#workoutList').on('click', '.workout-card', function (e) {
-        if ($(e.target).hasClass('btn-view-detail') ||
-            $(e.target).closest('.btn-view-detail').length) return;
-        const workout = JSON.parse($(this).attr('data-workout'));
-        showWorkoutModal(workout);
-    });
+    function toggleWorkoutDetails($card) {
+        const $detail = $card.find('.workout-detail');
+        const isOpen  = $card.hasClass('active');
+
+        $('#workoutList .workout-card.active').not($card)
+            .removeClass('active')
+            .find('.workout-detail').slideUp(250).end()
+            .find('.btn-view-detail .bi')
+            .removeClass('bi-chevron-up').addClass('bi-chevron-down');
+
+        if (isOpen) {
+            $card.removeClass('active');
+            $detail.slideUp(250);
+            $card.find('.btn-view-detail .bi')
+                .removeClass('bi-chevron-up').addClass('bi-chevron-down');
+        } else {
+            $card.addClass('active');
+            $detail.slideDown(250);
+            $card.find('.btn-view-detail .bi')
+                .removeClass('bi-chevron-down').addClass('bi-chevron-up');
+        }
+    }
 
     function showWorkoutModal(w) {
         const color = Utils.muscleColor(w.muscleGroup);
@@ -558,6 +589,19 @@ $(document).ready(function () {
                         </div>
                     </div>
                 </div>
+                <button class="btn btn-sm btn-outline-primary w-100 mt-3 btn-toggle-exercise">
+                    <i class="bi bi-chevron-down me-1"></i>Xem chi tiết
+                </button>
+                <div class="exercise-detail mt-3 d-none">
+                    <div class="detail-section">
+                        <div class="detail-title mb-2">Thông tin chi tiết</div>
+                        <div class="detail-content d-flex flex-column gap-2">
+                            <span class="badge bg-white text-dark border">Cal/set: ${ex.caloriesPerSet || 0}</span>
+                            <span class="badge bg-white text-dark border">Tổng calo: ${totalCal} cal</span>
+                            ${ex.weight ? `<span class="badge bg-white text-dark border">Cân nặng: ${ex.weight} kg</span>` : ''}
+                        </div>
+                    </div>
+                </div>
             `);
 
             $col.append($card);
@@ -570,7 +614,39 @@ $(document).ready(function () {
     }
 
     /* ================================================
-       ✅ SỰ KIỆN 7: Tìm kiếm Exercise - .on('input')
+       ✅ SỰ KIỆN 7: Toggle chi tiết exercise
+    ================================================ */
+    $('#exercisesList').on('click', '.btn-toggle-exercise', function (e) {
+        e.stopPropagation();
+        const $card = $(this).closest('.exercise-card');
+        toggleExerciseDetails($card);
+    });
+
+    function toggleExerciseDetails($card) {
+        const $detail = $card.find('.exercise-detail');
+        const isOpen  = $card.hasClass('active');
+
+        $('#exercisesList .exercise-card.active').not($card)
+            .removeClass('active')
+            .find('.exercise-detail').slideUp(250).end()
+            .find('.btn-toggle-exercise .bi')
+            .removeClass('bi-chevron-up').addClass('bi-chevron-down');
+
+        if (isOpen) {
+            $card.removeClass('active');
+            $detail.slideUp(250);
+            $card.find('.btn-toggle-exercise .bi')
+                .removeClass('bi-chevron-up').addClass('bi-chevron-down');
+        } else {
+            $card.addClass('active');
+            $detail.slideDown(250);
+            $card.find('.btn-toggle-exercise .bi')
+                .removeClass('bi-chevron-down').addClass('bi-chevron-up');
+        }
+    }
+
+    /* ================================================
+       ✅ SỰ KIỆN 8: Tìm kiếm Exercise - .on('input')
     ================================================ */
     $('#exerciseSearch').on('input', Utils.debounce(function () {
         const kw = $(this).val().toLowerCase().trim();   // ✅ .val()

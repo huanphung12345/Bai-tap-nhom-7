@@ -21,6 +21,36 @@ $(document).ready(function () {
     /* =====================================================
        INIT
     ===================================================== */
+    const USER_PHOTOS_MALE = [
+        'https://randomuser.me/api/portraits/men/12.jpg',
+        'https://randomuser.me/api/portraits/men/34.jpg',
+        'https://randomuser.me/api/portraits/men/56.jpg',
+        'https://randomuser.me/api/portraits/men/72.jpg',
+        'https://randomuser.me/api/portraits/men/82.jpg',
+        'https://randomuser.me/api/portraits/men/95.jpg',
+        'https://randomuser.me/api/portraits/men/22.jpg',
+        'https://randomuser.me/api/portraits/men/47.jpg'
+    ];
+
+    const USER_PHOTOS_FEMALE = [
+        'https://randomuser.me/api/portraits/women/18.jpg',
+        'https://randomuser.me/api/portraits/women/29.jpg',
+        'https://randomuser.me/api/portraits/women/41.jpg',
+        'https://randomuser.me/api/portraits/women/53.jpg',
+        'https://randomuser.me/api/portraits/women/64.jpg',
+        'https://randomuser.me/api/portraits/women/76.jpg',
+        'https://randomuser.me/api/portraits/women/85.jpg',
+        'https://randomuser.me/api/portraits/women/93.jpg'
+    ];
+
+    const USER_PHOTOS_NEUTRAL = [
+        'https://randomuser.me/api/portraits/men/13.jpg',
+        'https://randomuser.me/api/portraits/women/27.jpg',
+        'https://randomuser.me/api/portraits/men/49.jpg',
+        'https://randomuser.me/api/portraits/women/58.jpg',
+        'https://randomuser.me/api/portraits/men/61.jpg'
+    ];
+
     initUsers();
     initBMICalculator();
     renderBMIHistory();
@@ -99,24 +129,23 @@ $(document).ready(function () {
     }
 
     function buildUserCard(user, idx) {
-        const bmiInfo  = getBMIInfo(user.bmi);
-        const initials = getInitials(user.name);
-        const gradient = getGradient(user.gender, idx);
-        const muscleIcon = Utils.muscleIcon(user.favoriteWorkout);
-        const muscleColor = Utils.muscleColor(user.favoriteWorkout);
+        const bmiInfo      = getBMIInfo(user.bmi);
+        const initials     = getInitials(user.name);
+        const avatarUrl    = getUserAvatarUrl(user, idx);
+        const muscleIcon   = Utils.muscleIcon(user.favoriteWorkout);
+        const muscleColor  = Utils.muscleColor(user.favoriteWorkout);
 
         const $col  = $('<div>')
             .addClass('col-lg-3 col-md-4 col-sm-6 user-col');
         const $card = $('<div>').addClass('user-card card');
 
-        // Header gradient
         const $header = $('<div>')
-            .addClass('user-header text-white')
-            .css('background', gradient);
+            .addClass('user-header')
+            .css('background', 'linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(59, 130, 246, 0.08))');
 
         $header.html(`
             <div class="user-avatar">
-                ${initials}
+                <img class="user-avatar-img" src="${avatarUrl}" alt="${user.name}">
             </div>
             <div class="user-name">${user.name}</div>
             <div class="user-meta">
@@ -125,7 +154,6 @@ $(document).ready(function () {
             </div>
         `);
 
-        // Body
         const $body = $('<div>').addClass('user-body');
         $body.html(`
             <div class="user-info-row">
@@ -159,7 +187,7 @@ $(document).ready(function () {
             </div>
             <div class="user-info-row">
                 <span class="user-info-label">
-                    <i class="bi bi-bar-chart text-purple"></i>Trình độ
+                    <i class="bi bi-bar-chart text-secondary"></i>Trình độ
                 </span>
                 <span class="level-badge level-${user.level}">${user.level}</span>
             </div>
@@ -181,7 +209,6 @@ $(document).ready(function () {
             </div>
         `);
 
-        // ✅ SỰ KIỆN: hover hiệu ứng
         $card.on('mouseenter', function () {
             $(this).find('.user-avatar').animate({ marginTop: '-5px' }, 200);
         }).on('mouseleave', function () {
@@ -191,6 +218,24 @@ $(document).ready(function () {
         $card.append($header, $body);
         $col.append($card);
         return $col;
+    }
+
+    function getUserAvatarUrl(user, idx) {
+        const imageUrl = user.photo || user.avatar || user.avatarUrl || user.image;
+        if (imageUrl) return imageUrl;
+
+        const gender = (user.gender || '').toLowerCase();
+        const index  = idx % USER_PHOTOS_MALE.length;
+
+        if (gender.includes('nam')) {
+            return USER_PHOTOS_MALE[index];
+        }
+
+        if (gender.includes('nữ') || gender.includes('nu') || gender.includes('female')) {
+            return USER_PHOTOS_FEMALE[index];
+        }
+
+        return USER_PHOTOS_NEUTRAL[idx % USER_PHOTOS_NEUTRAL.length];
     }
 
     /* =====================================================

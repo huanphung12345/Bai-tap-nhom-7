@@ -138,14 +138,14 @@ const Utils = (() => {
 
     /* ---------- Toast (Bootstrap) ---------- */
     const toast = (title, msg, type = 'success') => {
-        const $t   = $('#toastNotification');
+        const $t = $('#toastNotification');
+        if (!$t.length) return;
         const icons = {
             success: 'bi-check-circle-fill text-success',
             error:   'bi-x-circle-fill text-danger',
             warning: 'bi-exclamation-triangle-fill text-warning',
             info:    'bi-info-circle-fill text-primary'
         };
-        // ✅ DOM: .html() .attr()
         $('#toastTitle').text(title);
         $('#toastBody').text(msg);
         $('#toastIcon').attr('class', `bi me-2 ${icons[type] || icons.info}`);

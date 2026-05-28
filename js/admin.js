@@ -28,6 +28,7 @@ $(document).ready(function () {
             // ✅ YÊU CẦU 4: $.ajax() qua API module
             await Promise.all([fetchWorkouts(), fetchExercises()]);
             updateStats();
+            showAdminSection('#workoutManager');
         } catch (e) {
             Utils.toast('Lỗi', 'Không thể tải dữ liệu từ API!', 'error');
         }
@@ -80,6 +81,41 @@ $(document).ready(function () {
         $('.admin-stat-number').addClass('bounce-in');
         setTimeout(() => $('.admin-stat-number').removeClass('bounce-in'), 600);
     }
+
+    function showAdminSection(target) {
+        const sectionId = target.startsWith('#') ? target : `#${target}`;
+        const showWorkout = sectionId === '#workoutManager';
+
+        $('#workoutManager').toggleClass('d-none', !showWorkout);
+        $('#exerciseManager').toggleClass('d-none', showWorkout);
+
+        $('.admin-toggle-btn').each(function () {
+            const active = $(this).data('target') === sectionId;
+            $(this).toggleClass('active', active);
+        });
+
+        $('nav.navbar .nav-link').removeClass('active');
+        $(`nav.navbar .nav-link[href="${sectionId}"]`).addClass('active');
+
+        $('#workoutFormCollapse, #exerciseFormCollapse').slideUp(200);
+    }
+
+    $('.admin-toggle-btn').on('click', function () {
+        const target = $(this).data('target');
+        showAdminSection(target);
+        $('html,body').animate({
+            scrollTop: $(target).offset().top - 90
+        }, 300);
+    });
+
+    $('nav.navbar .nav-link[href="#workoutManager"], nav.navbar .nav-link[href="#exerciseManager"]').on('click', function (e) {
+        e.preventDefault();
+        const target = $(this).attr('href');
+        showAdminSection(target);
+        $('html,body').animate({
+            scrollTop: $(target).offset().top - 90
+        }, 300);
+    });
 
     /* ================================================
        WORKOUT TABLE
