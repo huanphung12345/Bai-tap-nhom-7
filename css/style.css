@@ -1403,4 +1403,1067 @@ body {
     /* chữ trắng */
     border-color: #0d6efd;
     /* viền cùng màu */
+<<<<<<< HEAD
+=======
+}
+.navbar .nav-link.active {
+    color: #fff !important;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 8px 14px;
+}
+/* ============================================
+   CALORIE CALCULATOR - ENHANCED STYLES
+   ============================================ */
+
+/* Main Card */
+.calc-main-card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.calc-main-card .card-header {
+    padding: 18px 24px;
+}
+
+/* Weight Section */
+.calc-weight-section {
+    background: linear-gradient(135deg, #f0f4ff, #e8ecff);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.calc-weight-section .form-label {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+/* Exercise Row */
+.calc-exercise-row {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calc-exercise-row:hover {
+    border-color: #667eea;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);
+}
+
+.calc-exercise-row .row-number {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.calc-exercise-row .btn-remove-row {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    padding: 0;
+}
+
+.calc-exercise-row .btn-remove-row:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: scale(1.1);
+}
+
+.calc-exercise-row .exercise-select {
+    font-size: 0.9rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 8px 12px;
+}
+
+.calc-exercise-row .exercise-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.calc-exercise-row .duration-input {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.calc-exercise-row .duration-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.calc-exercise-row .intensity-select {
+    font-size: 0.85rem;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+
+.calc-exercise-row .row-calorie-preview {
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Add Exercise Button */
+.btn-add-exercise {
+    border-style: dashed;
+    border-width: 2px;
+    padding: 14px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn-add-exercise:hover {
+    background: rgba(102, 126, 234, 0.05);
+    border-style: solid;
+    transform: translateY(-1px);
+}
+
+/* Result Card */
+.calc-result-card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: sticky;
+    top: 90px;
+}
+
+/* Placeholder */
+.calc-placeholder-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fff5f5, #ffe0e0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.calc-placeholder-icon i {
+    font-size: 2.5rem;
+    color: #ffb3b3;
+}
+
+/* Total Display */
+.calc-total-display {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    border-radius: 16px;
+    padding: 30px 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.calc-total-display::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.calc-total-display::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -20%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.calc-fire-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.calc-fire-icon i {
+    font-size: 1.8rem;
+    animation: fireFlicker 1.5s ease-in-out infinite;
+}
+
+@keyframes fireFlicker {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.calc-total-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+}
+
+.calc-total-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.calc-total-unit {
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0.8;
+    position: relative;
+    z-index: 1;
+}
+
+/* Stats Box */
+.calc-stat-box {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.calc-stat-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.calc-stat-box i {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.calc-stat-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #2d3436;
+    line-height: 1.2;
+}
+
+.calc-stat-label {
+    font-size: 0.75rem;
+    color: #636e72;
+    font-weight: 500;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Breakdown */
+.calc-breakdown {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.calc-breakdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.calc-breakdown-item:last-child {
+    border-bottom: none;
+}
+
+.calc-breakdown-item .breakdown-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.calc-breakdown-item .breakdown-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.calc-breakdown-item .breakdown-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #2d3436;
+}
+
+.calc-breakdown-item .breakdown-meta {
+    font-size: 0.75rem;
+    color: #636e72;
+}
+
+.calc-breakdown-item .breakdown-cal {
+    font-weight: 700;
+    color: #ff6b6b;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.calc-breakdown-item .breakdown-bar {
+    height: 4px;
+    border-radius: 2px;
+    background: #e9ecef;
+    width: 100%;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+.calc-breakdown-item .breakdown-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    transition: width 0.8s ease;
+}
+
+/* Food Equivalents */
+.calc-food-equiv {
+    background: linear-gradient(135deg, #fff9e6, #fff3cd);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.calc-food-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.85rem;
+}
+
+.calc-food-item .food-emoji {
+    font-size: 1.3rem;
+}
+
+.calc-food-item .food-name {
+    flex: 1;
+    color: #636e72;
+}
+
+.calc-food-item .food-amount {
+    font-weight: 700;
+    color: #2d3436;
+}
+
+/* Advice */
+.calc-advice {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.calc-advice h6 {
+    color: #2e7d32;
+    margin-bottom: 8px;
+}
+
+.calc-advice p {
+    font-size: 0.85rem;
+    color: #4a7c59;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* History List */
+.calc-history-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.calc-history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.calc-history-item:hover {
+    background: #f8f9fa;
+}
+
+.calc-history-item:last-child {
+    border-bottom: none;
+}
+
+.calc-history-item .history-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-history-item .history-date {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.calc-history-item .history-detail {
+    font-size: 0.8rem;
+    color: #636e72;
+}
+
+.calc-history-item .history-cal {
+    font-weight: 700;
+    color: #ff6b6b;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* Quick Add Panel */
+.quick-add-btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.quick-add-btn:hover {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+    transform: translateY(-1px);
+}
+
+.quick-add-btn .qa-emoji {
+    font-size: 1.1rem;
+}
+
+.quick-add-btn .qa-name {
+    font-weight: 600;
+    color: #2d3436;
+    flex: 1;
+    text-align: left;
+}
+
+.quick-add-btn .qa-met {
+    font-size: 0.7rem;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calc-total-number {
+        font-size: 2.5rem;
+    }
+
+    .calc-exercise-row {
+        padding: 12px;
+    }
+
+    .calc-result-card {
+        position: static;
+    }
+}
+
+/* Animation for result appearance */
+@keyframes resultPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.calc-result-animate {
+    animation: resultPop 0.5s ease-out;
+}
+
+/* Calorie number counting animation */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.count-animate {
+    animation: countUp 0.4s ease-out;
+}
+/* Slide out animation for removed rows */
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+        max-height: 200px;
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-30px);
+        max-height: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        overflow: hidden;
+    }
+}
+
+/* Toast slide in */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* ==================== BMI CALCULATOR — CẢI TIẾN ==================== */
+
+/* Form card */
+.bmi-form-card {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.bmi-form-card .card-header {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+}
+
+/* Gender buttons */
+.gender-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    user-select: none;
+}
+
+.gender-btn:hover {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.gender-btn.active {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.1));
+    color: #667eea;
+}
+
+/* Live preview */
+.bmi-live-preview {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: 1px dashed #dee2e6;
+}
+
+/* Result card */
+.bmi-result-card {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Avatar */
+.bmi-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+/* BMI Value Box */
+.bmi-value-box {
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    transition: background 0.5s ease;
+}
+
+.bmi-value-box.cat-underweight {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+}
+
+.bmi-value-box.cat-normal {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+
+.bmi-value-box.cat-overweight {
+    background: linear-gradient(135deg, #fff8e1, #ffecb3);
+}
+
+.bmi-value-box.cat-obese1 {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+}
+
+.bmi-value-box.cat-obese2 {
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+}
+
+.bmi-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 4px;
+}
+
+.bmi-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.bmi-category-badge {
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+/* BMI Scale */
+.bmi-scale-bar {
+    display: flex;
+    height: 14px;
+    border-radius: 7px;
+    overflow: visible;
+    position: relative;
+}
+
+.bmi-scale-segment {
+    height: 100%;
+}
+
+.seg-underweight,
+.bmi-row-underweight td:first-child {
+    background: #4FC3F7;
+}
+
+.seg-normal {
+    background: #66BB6A;
+    flex: 4.4;
+}
+
+.seg-overweight {
+    background: #FFA726;
+    flex: 2;
+}
+
+.seg-obese1 {
+    background: #EF5350;
+    flex: 5;
+}
+
+.seg-obese2 {
+    background: #B71C1C;
+    flex: 10;
+}
+
+.seg-underweight {
+    background: #4FC3F7;
+    flex: 8.5;
+    border-radius: 7px 0 0 7px;
+}
+
+.seg-normal {
+    border-radius: 0;
+}
+
+.seg-overweight {
+    border-radius: 0;
+}
+
+.seg-obese1 {
+    border-radius: 0;
+}
+
+.seg-obese2 {
+    border-radius: 0 7px 7px 0;
+}
+
+.bmi-scale-pointer {
+    position: absolute;
+    top: -6px;
+    width: 4px;
+    height: 26px;
+    background: #333;
+    border-radius: 2px;
+    transition: left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.bmi-scale-pointer::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%;
+}
+
+.bmi-scale-labels,
+.bmi-scale-names {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+.bmi-scale-names {
+    font-weight: 600;
+    font-size: 0.7rem;
+}
+
+/* Stat boxes */
+.bmi-stat-box {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bmi-stat-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bmi-stat-box i {
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.bmi-stat-val {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.bmi-stat-lbl {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 2px;
+}
+
+/* Section box (thành phần cơ thể, TDEE, kế hoạch) */
+.bmi-section-box {
+    background: #f8f9fa;
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid #e9ecef;
+}
+
+.bmi-section-box h6 {
+    color: #333;
+}
+
+/* Composition rings */
+.comp-ring-wrap {
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+}
+
+.comp-ring-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.comp-ring-arc {
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.comp-ring-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.comp-val {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #333;
+}
+
+.comp-unit {
+    font-size: 0.7rem;
+    color: #6c757d;
+}
+
+/* TDEE items */
+.tdee-item {
+    background: white;
+    border-radius: 10px;
+    padding: 12px 8px;
+    border: 1px solid #e9ecef;
+}
+
+.tdee-main {
+    border: 2px solid #667eea;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.tdee-val {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.tdee-lbl {
+    font-size: 0.72rem;
+    color: #6c757d;
+    margin-top: 2px;
+}
+
+/* Goal plan */
+.bmi-goal-plan {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.bmi-goal-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.bmi-goal-text {
+    flex: 1;
+}
+
+.bmi-goal-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.bmi-goal-desc {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.bmi-goal-badge {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* Advice box */
+.bmi-advice-box {
+    background: linear-gradient(135deg, #fffde7, #fff8e1);
+    border: 1px solid #ffe082;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+/* SVG Gauge */
+.bmi-gauge-svg {
+    max-width: 340px;
+    width: 100%;
+    height: auto;
+}
+
+.gauge-segment {
+    transition: opacity 0.3s ease;
+}
+
+.gauge-segment:hover {
+    opacity: 0.8;
+}
+
+.gauge-needle {
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: 150px 155px;
+}
+
+.gauge-glow {
+    animation: gaugeGlow 2s ease-in-out infinite;
+}
+
+@keyframes gaugeGlow {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Reference table highlight */
+.bmi-table tbody tr {
+    transition: background 0.3s ease;
+}
+
+.bmi-table .bmi-row-underweight td:first-child {
+    border-left: 4px solid #4FC3F7;
+}
+
+.bmi-table .bmi-row-normal td:first-child {
+    border-left: 4px solid #66BB6A;
+}
+
+.bmi-table .bmi-row-overweight td:first-child {
+    border-left: 4px solid #FFA726;
+}
+
+.bmi-table .bmi-row-obese1 td:first-child {
+    border-left: 4px solid #EF5350;
+}
+
+.bmi-table .bmi-row-obese2 td:first-child {
+    border-left: 4px solid #B71C1C;
+}
+
+.bmi-table tr.highlight-row {
+    background: rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Badge orange */
+.badge.bg-orange {
+    background-color: #EF5350;
+}
+
+.text-orange {
+    color: #EF5350;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bmi-animate-in {
+    animation: fadeInUp 0.5s ease forwards;
+>>>>>>> 378dac4 (first commit)
 }
